@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar.jsx';
 import Alert from '../components/Alert.jsx';
 
 export default function Profile() {
+  const [completed, setCompleted] = useState({ taught: [], learned: [], total: 0 });
   const navigate = useNavigate();
   const user = getUser();
   const [skillsHave, setSkillsHave] = useState([]);
@@ -16,6 +17,7 @@ export default function Profile() {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
+    api.get('/profile/completed').then(setCompleted).catch(() => {});
     api.get('/profile').then((data) => {
       setSkillsHave(data.skills_have || []);
       setSkillsWant(data.skills_want || []);
@@ -106,6 +108,60 @@ export default function Profile() {
             ))}
           </div>
         </div>
+          <div className="profile-stats-row" style={{ marginTop: 32 }}>
+  <div className="profile-stat-card">
+    <div className="profile-stat-number">{completed.taught.length}</div>
+    <div className="profile-stat-label">Skills Taught</div>
+  </div>
+  <div className="profile-stat-card">
+    <div className="profile-stat-number">{completed.learned.length}</div>
+    <div className="profile-stat-label">Skills Learned</div>
+  </div>
+  <div className="profile-stat-card">
+    <div className="profile-stat-number">{completed.total}</div>
+    <div className="profile-stat-label">Total Exchanges</div>
+  </div>
+</div>
+
+{completed.taught.length > 0 && (
+  <div className="section-card">
+    <div className="section-card-title">✅ Skills I've Taught</div>
+    <div className="exchange-history-grid">
+      {completed.taught.map((t, i) => (
+        <div key={i} className="exchange-history-item">
+          <div className="exchange-history-skills">
+            <span className="tag tag-have">{t.skill_offered}</span>
+            <span style={{ color: 'var(--text3)' }}>taught to</span>
+            <span style={{ fontWeight: 600, fontSize: '0.88rem' }}>{t.receiver?.name}</span>
+          </div>
+          <div className="exchange-history-date">
+            {new Date(t.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+{completed.learned.length > 0 && (
+  <div className="section-card">
+    <div className="section-card-title">📚 Skills I've Learned</div>
+    <div className="exchange-history-grid">
+      {completed.learned.map((t, i) => (
+        <div key={i} className="exchange-history-item">
+          <div className="exchange-history-skills">
+            <span className="tag tag-want">{t.skill_requested}</span>
+            <span style={{ color: 'var(--text3)' }}>learned from</span>
+            <span style={{ fontWeight: 600, fontSize: '0.88rem' }}>{t.sender?.name}</span>
+          </div>
+          <div className="exchange-history-date">
+            {new Date(t.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
         <button className="btn btn-primary" style={{ maxWidth: 240 }} onClick={save} disabled={loading}>
           {loading ? <><span className="spinner" /> Saving…</> : 'Save Profile'}

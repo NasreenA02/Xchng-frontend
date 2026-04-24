@@ -8,6 +8,10 @@ import BrowseUsers from './pages/BrowseUsers.jsx';
 import Requests from './pages/Requests.jsx';
 import Messages from './pages/Messages.jsx';
 import Ratings from './pages/Ratings.jsx';
+import PublicProfile from './pages/PublicProfile.jsx';
+import Terms from './pages/Terms.jsx';
+import Privacy from './pages/Privacy.jsx';
+
 
 
 const PrivateRoute = ({ children }) => {
@@ -29,6 +33,9 @@ export default function App() {
         <Route path="/messages" element={<PrivateRoute><Messages /></PrivateRoute>} />
         <Route path="/ratings" element={<PrivateRoute><Ratings /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/user/:id" element={<PrivateRoute><PublicProfile /></PrivateRoute>} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </BrowserRouter>
   );

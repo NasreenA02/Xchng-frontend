@@ -73,9 +73,12 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="footer-logo">Xchng</div>
-        <p className="footer-text">© 2026 Xchng. Built for the curious.
-        </p>
+         <div className="footer-logo">Xchng</div>
+  <p className="footer-text">© 2025 Xchng. Built for the curious.</p>
+  <div style={{ marginTop: 12, display: 'flex', gap: 20, justifyContent: 'center' }}>
+    <Link to="/terms" style={{ color: 'var(--text3)', fontSize: '0.85rem' }}>Terms & Conditions</Link>
+    <Link to="/privacy" style={{ color: 'var(--text3)', fontSize: '0.85rem' }}>Privacy Policy</Link>
+  </div>
       </footer>
     </div>
   );

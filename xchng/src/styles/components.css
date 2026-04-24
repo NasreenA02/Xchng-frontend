@@ -282,6 +282,80 @@
 .avg-score { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; }
 .avg-label { color: var(--text2); font-size: 0.88rem; }
 
+/* ── PUBLIC PROFILE ── */
+.public-profile-header {
+  display: flex; align-items: center; gap: 24px; margin-bottom: 36px;
+}
+.public-avatar {
+  width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 800; font-size: 2rem;
+}
+.public-name { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em; }
+.public-email { color: var(--text2); font-size: 0.9rem; margin-top: 4px; }
+.public-meta { display: flex; align-items: center; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+.public-rating { display: flex; align-items: center; gap: 6px; }
+.public-rating-score { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: #ffc83a; }
+.public-rating-stars { color: #ffc83a; font-size: 0.95rem; }
+.public-rating-count { color: var(--text2); font-size: 0.85rem; }
+.public-exchanges-count {
+  padding: 4px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 600;
+  background: rgba(124,106,255,0.12); color: var(--accent);
+  border: 1px solid rgba(124,106,255,0.2);
+}
+
+/* ── EXCHANGE HISTORY CARDS ── */
+.exchange-history-grid { display: flex; flex-direction: column; gap: 10px; }
+.exchange-history-item {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  transition: border-color 0.2s;
+}
+.exchange-history-item:hover { border-color: var(--accent); }
+.exchange-history-skills { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.exchange-history-with { color: var(--text2); font-size: 0.82rem; }
+.exchange-history-date { color: var(--text3); font-size: 0.78rem; white-space: nowrap; }
+
+/* ── PROFILE STATS ROW ── */
+.profile-stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 32px;
+}
+.profile-stat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; text-align: center;
+}
+.profile-stat-number {
+  font-family: var(--font-head); font-size: 2rem;
+  font-weight: 800; color: var(--accent); margin-bottom: 4px;
+}
+.profile-stat-label { color: var(--text2); font-size: 0.82rem; }
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+}
+.section-card-title {
+  font-family: var(--font-head); font-size: 1rem;
+  font-weight: 700; margin-bottom: 16px; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Review card */
+.review-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 10px;
+}
+.review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.review-name { font-weight: 600; font-size: 0.9rem; }
+.review-stars { color: #ffc83a; font-size: 0.9rem; }
+.review-text { color: var(--text2); font-size: 0.88rem; line-height: 1.5; }
+
+
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
   .navbar { padding: 16px 20px; }

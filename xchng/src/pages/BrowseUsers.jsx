@@ -85,13 +85,17 @@ export default function BrowseUsers() {
           <div className="users-grid">
             {filtered.map((u) => (
               <div key={u.id} className="user-card">
-                <div className="user-card-header">
-                  <div className="user-avatar">{u.name.charAt(0).toUpperCase()}</div>
-                  <div>
-                    <div className="user-name">{u.name}</div>
-                    <div className="user-email">{u.email}</div>
-                  </div>
-                </div>
+                <div
+  className="user-card-header"
+  style={{ cursor: 'pointer' }}
+  onClick={() => navigate(`/user/${u.id}`)}
+>
+  <div className="user-avatar">{u.name.charAt(0).toUpperCase()}</div>
+  <div>
+    <div className="user-name" style={{ color: 'var(--accent)' }}>{u.name}</div>
+    <div className="user-email">{u.email}</div>
+  </div>
+</div>
                 <div style={{ marginBottom: 10 }}>
                   <div className="skills-label">Offers</div>
                   <div className="tag-list">
